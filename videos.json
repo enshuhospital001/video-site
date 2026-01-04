@@ -1,0 +1,22 @@
+[ 
+  { 
+    "file": "sample01.mp4", 
+    "thumb": "sample01.jpg", 
+    "title": "sample01" 
+  } 
+,  { 
+    "file": "sample02.mp4", 
+    "thumb": "sample02.jpg", 
+    "title": "sample02" 
+  } 
+,  { 
+    "file": "sample03.mp4", 
+    "thumb": "sample03.jpg", 
+    "title": "sample03" 
+  } 
+,  { 
+    "file": "sample04.mp4", 
+    "thumb": "sample04.jpg", 
+    "title": "sample04" 
+  } 
+] 

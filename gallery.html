@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>動画ギャラリー（自動生成）</title>
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    padding: 20px;
+    background: #f5f5f5;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 10px;
+  }
+
+  .item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+
+  .item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  .item img {
+    width: 100%;
+    display: block;
+  }
+
+  .item-title {
+    padding: 12px;
+    font-size: 15px;
+    color: #444;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+  <h1>動画ギャラリー（自動生成）</h1>
+
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    // JSON を読み込んでギャラリーを生成
+    fetch("videos.json")
+      .then(response => response.json())
+      .then(videos => {
+        const gallery = document.getElementById("gallery");
+
+        videos.forEach(video => {
+          const item = document.createElement("div");
+          item.className = "item";
+          item.onclick = () => {
+            location.href = `index.html?video=${video.file}`;
+          };
+
+          item.innerHTML = `
+            <img src="videos/thumbs/${video.thumb}" alt="${video.title}">
+            <div class="item-title">${video.title}</div>
+          `;
+
+          gallery.appendChild(item);
+        });
+      });
+  </script>
+
+</body>
+</html>

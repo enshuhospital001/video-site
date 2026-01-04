@@ -1,0 +1,10 @@
+# 動画ファイルを GitHub に送らない
+videos/*.mp4
+videos/*.mov
+videos/*.avi
+videos/*.mkv
+videos/*.webm
+
+# 一応、動画生成バッチも除外（任意）
+videos/create_thumbs.bat
+videos/generate_json.bat
