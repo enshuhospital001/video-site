@@ -148,39 +148,45 @@
   </div>
 </div>
 
-  <script>
-    const videoName = getVideoName();
-    const baseName = videoName.replace(".mp4", "");
+<script>
+  const videoName = getVideoName();
+  const baseName = videoName.split("/").pop().replace(".mp4", "");
 
-    document.getElementById("video-source").src = "videos/" + videoName;
-    document.getElementById("video-title").textContent = baseName;
-    document.getElementById("video-desc").textContent = baseName + " の動画です。";
+  // ★ フルURLをそのまま使う（videos/ を付けない）
+  document.getElementById("video-source").src = videoName;
+  document.getElementById("video-title").textContent = baseName;
+  document.getElementById("video-desc").textContent = baseName + " の動画です。";
 
-// ★ 関連動画を読み込む
-    fetch("videos.json")
-      .then(res => res.json())
-      .then(list => {
-        const related = document.getElementById("related-list");
+  // ★ 関連動画を読み込む
+  fetch("videos.json")
+    .then(res => res.json())
+    .then(data => {
+      const related = document.getElementById("related-list");
 
-        list
-          .filter(v => v.file !== videoName) // 今の動画以外
-          .forEach(v => {
-            const item = document.createElement("div");
-            item.className = "related-item";
-            item.onclick = () => {
-              location.href = `index.html?video=${v.file}`;
-            };
+      data.videos
+        .filter(v => v.file !== videoName) // 今の動画以外
+        .forEach(v => {
+          const item = document.createElement("div");
+          item.className = "related-item";
+          item.onclick = () => {
+            location.href = `index.html?video=${encodeURIComponent(v.file)}`;
+          };
 
-            item.innerHTML = `
-              <img src="videos/thumbs/${v.thumb}">
-              <div class="related-title">${v.title}</div>
-            `;
+          // ★ サムネイルがない場合はプレースホルダーを使う
+          const thumb = v.thumb
+            ? `videos/thumbs/${v.thumb}`
+            : `https://via.placeholder.com/120x68?text=${encodeURIComponent(v.title)}`;
 
-            related.appendChild(item);
-          });
-      });
+          item.innerHTML = `
+            <img src="${thumb}">
+            <div class="related-title">${v.title}</div>
+          `;
 
-  </script>
+          related.appendChild(item);
+        });
+    });
+</script>
+
 
 </body>
 </html>
