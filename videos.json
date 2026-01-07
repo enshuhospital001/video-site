@@ -1,22 +1,27 @@
-[ 
-  { 
-    "file": "sample01.mp4", 
-    "thumb": "sample01.jpg", 
-    "title": "sample01" 
-  } 
-,  { 
-    "file": "sample02.mp4", 
-    "thumb": "sample02.jpg", 
-    "title": "sample02" 
-  } 
-,  { 
-    "file": "sample03.mp4", 
-    "thumb": "sample03.jpg", 
-    "title": "sample03" 
-  } 
-,  { 
-    "file": "sample04.mp4", 
-    "thumb": "sample04.jpg", 
-    "title": "sample04" 
-  } 
-] 
+{ 
+  "videos": [ 
+    { 
+      "title": "sample01", 
+      "file": "https://pub-690a4651aecd4214ac8541ad1cc80dd2.r2.dev/sample01.mp4", 
+      "thumb": "sample01.jpg" 
+    } 
+, 
+    { 
+      "title": "sample02", 
+      "file": "https://pub-690a4651aecd4214ac8541ad1cc80dd2.r2.dev/sample02.mp4", 
+      "thumb": "sample02.jpg" 
+    } 
+, 
+    { 
+      "title": "sample03", 
+      "file": "https://pub-690a4651aecd4214ac8541ad1cc80dd2.r2.dev/sample03.mp4", 
+      "thumb": "sample03.jpg" 
+    } 
+, 
+    { 
+      "title": "sample04", 
+      "file": "https://pub-690a4651aecd4214ac8541ad1cc80dd2.r2.dev/sample04.mp4", 
+      "thumb": "sample04.jpg" 
+    } 
+  ] 
+} 

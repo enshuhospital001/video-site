@@ -56,29 +56,29 @@
 
   <div class="gallery" id="gallery"></div>
 
-  <script>
-    // JSON を読み込んでギャラリーを生成
-    fetch("videos.json")
-      .then(response => response.json())
-      .then(videos => {
-        const gallery = document.getElementById("gallery");
+    <script>
+      // JSON を読み込んでギャラリーを生成
+      fetch("videos.json")
+        .then(response => response.json())
+        .then(data => {
+          const gallery = document.getElementById("gallery");
 
-        videos.forEach(video => {
-          const item = document.createElement("div");
-          item.className = "item";
-          item.onclick = () => {
-            location.href = `index.html?video=${video.file}`;
-          };
+          data.videos.forEach(video => {
+            const item = document.createElement("div");
+            item.className = "item";
+            item.onclick = () => {
+              location.href = `index.html?video=${video.file}`;
+            };
 
-          item.innerHTML = `
-            <img src="videos/thumbs/${video.thumb}" alt="${video.title}">
-            <div class="item-title">${video.title}</div>
-          `;
+            item.innerHTML = `
+              <img src="videos/thumbs/${video.thumb}" alt="${video.title}">
+              <div class="item-title">${video.title}</div>
+            `;
 
-          gallery.appendChild(item);
+            gallery.appendChild(item);
+          });
         });
-      });
-  </script>
+    </script>
 
 </body>
 </html>
